@@ -1,0 +1,18 @@
+<div class="page-header">
+  <a href="/#/home">back</a>
+</div>
+
+
+<div ng-repeat="user in user.friends">
+  <h1>All Users</h1>
+  {{user}}
+</div>
+
+
+<form ng-submit="addFriend()">
+  <h3>Add a Friend</h3>
+</form>
+
+<form ng-submit="removeFriend()">
+  <h3>Remove Friend</h3>
+</form>
