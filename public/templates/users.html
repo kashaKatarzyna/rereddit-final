@@ -2,17 +2,19 @@
   <a href="/#/home">back</a>
 </div>
 
+<h1>All Users</h1>
 
-<div ng-repeat="user in user.friends">
-  <h1>All Users</h1>
-  {{user}}
-</div>
+<div ng-repeat="user in users">
+    <div>
+        <li>{{user.username}}</li>
+    </div>
+</div> 
+ 
 
 
-<form ng-submit="addFriend()">
-  <h3>Add a Friend</h3>
-</form>
+   <!--  <div>
+    {{user.name}}
+    <button ng-submit="removeFriend()">Remove Friend</button>
+    </div>
+ -->
 
-<form ng-submit="removeFriend()">
-  <h3>Remove Friend</h3>
-</form>

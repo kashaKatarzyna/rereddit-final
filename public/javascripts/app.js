@@ -42,6 +42,11 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $url
         }
       }]
     })
+    .state('users', {
+      url: '/users',
+      templateUrl: '/templates/users.html',
+      controller: 'NavCtrl',
+    })
 
   $urlRouterProvider.otherwise('home');
 }]);

@@ -96,7 +96,7 @@ router.param('comment', function(req, res, next, id) {
   });
 });
 
-router.param('user', function(req, res,, next, id){
+router.param('user', function(req, res, next, id){
   var query = User.findById(id);
 
   query.exec(function (err, user){
