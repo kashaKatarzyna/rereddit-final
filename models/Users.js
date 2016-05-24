@@ -34,6 +34,11 @@ UserSchema.methods.generateJWT = function() {
   }, 'myLittleSecret');
 };
 
+//can add other users to friends array
+UserSchema.methods.addFriend = function(user){
+  this.friends.push(user);
+};
+
 var User = mongoose.model('User', UserSchema);
 
 module.exports = User;

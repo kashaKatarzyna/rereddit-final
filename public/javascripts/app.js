@@ -46,6 +46,7 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $url
       url: '/users',
       templateUrl: '/templates/users.html',
       controller: 'NavCtrl',
+      
     })
 
   $urlRouterProvider.otherwise('home');

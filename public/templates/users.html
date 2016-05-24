@@ -5,16 +5,12 @@
 <h1>All Users</h1>
 
 <div ng-repeat="user in users">
-    <div>
-        <li>{{user.username}}</li>
+    <div><br>
+        <div>{{user.username}}<br> <button ng-show="true" ng-click="addFriend(user)">Add Friend</button>
+        <button ng-hide="false">Remove Friend</button>
+        </div>
     </div>
 </div> 
  
 
-
-   <!--  <div>
-    {{user.name}}
-    <button ng-submit="removeFriend()">Remove Friend</button>
-    </div>
- -->
 
