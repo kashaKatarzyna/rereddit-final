@@ -129,21 +129,18 @@ router.put('/users/:user/friends/:friend', function(req, res, next){
   User.findById(req.params.user, function(err, user){
     user.friends.push(req.params.friend);
     user.save(function (err, user) {
-      res.json(user);
+      // res.json(user);
     });
   });
+
+  User.findById(req.params.friend, function(err, user){
+    user.friends.push(req.params.user);
+    user.save(function(err, user){
+      // res.json(friend);
+    })
+  })
+  res.end();  
 });
-
-router.put('/friends/:friend/users/:user', function(req, res, next){
-  User.findById(req.params.user, function(err, user){
-    friend.user.push(req.params.friend);
-    friend.save(function(err, user){
-      res.json(friend);
-    });
-  });
-});
-
-
 
 
 //get a piece of something///params
@@ -170,17 +167,5 @@ router.param('comment', function(req, res, next, id) {
     return next();
   });
 });
-
-// router.param('user', function(req, res, next, id){
-//   var query = User.findById(id);
-
-//   query.exec(function (err, user){
-//     if (err) { return next(err); }
-//     if (!user) { return next(new Error('can\'t find user')); }
-
-//     req.user = user;
-//     return next();
-//   });
-// });
 
 module.exports = router;
