@@ -6,7 +6,7 @@ var UserSchema = new mongoose.Schema({
   username: { type: String, lowercase: true, unique: true },
   hash: String,
   salt: String,
-  friends:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+  friends:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}] //added bc we want each user to have a nework of friends
 });
 
 UserSchema.methods.setPassword = function(password){
@@ -33,6 +33,12 @@ UserSchema.methods.generateJWT = function() {
     exp: parseInt(exp.getTime() / 1000),
   }, 'myLittleSecret');
 };
+
+//dont need this method bc we are doing this in the server index..js file 
+//can add other users to friends array
+// UserSchema.methods.addFriend = function(user){
+//   this.friends.push(user);
+// };
 
 var User = mongoose.model('User', UserSchema);
 
