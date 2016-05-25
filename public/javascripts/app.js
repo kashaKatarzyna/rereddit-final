@@ -45,7 +45,12 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $url
     .state('users', {
       url: '/users',
       templateUrl: '/templates/users.html',
-      controller: 'NavCtrl',
+      controller: 'UsersCtrl',
+      resolve: {  //need a promise while the server gets and brings back all the users to the route
+        postPromise: ['friends', function(friends){ //has to be nme of our service
+          return friends.getUsers();  //invokes the function in friends.js (service) when all users are ready from the server
+        }]
+      }
       
     })
 

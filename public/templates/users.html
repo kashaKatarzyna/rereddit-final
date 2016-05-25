@@ -4,10 +4,12 @@
 
 <h1>All Users</h1>
 
-<div ng-repeat="user in users">
+<!-- filter thru users and wont display current user logged in -->
+<div ng-repeat="user in users" ng-if="user.username != currentUser.username">
     <div><br>
-        <div>{{user.username}}<br> <button ng-show="true" ng-click="addFriend(user)">Add Friend</button>
-        <button ng-hide="false">Remove Friend</button>
+        <div>{{user.username}}<br>
+          <button class="btn btn-primary" ng-click="addFriend()" ng-hide="isFriends(user)">Add Friend</button>
+          <button class="btn btn-danger" ng-click="removeFriend()" ng-show="isFriends(user)">Remove Friend</button>
         </div>
     </div>
 </div> 

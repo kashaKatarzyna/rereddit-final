@@ -113,9 +113,13 @@ router.put('/posts/:post/comments/:comment/upvote', function(req, res, next) {
 });
 
 
-//USERS
+//USERS..
+ // setting up the server side to get all the users back into the client side.. connects with services
+//services on client side connects with the server.
+//everything starts from client side bc thats where the requests are coming from,
 
-router.get('/users', function(req, res, next){
+//get req in the server to database to get all the users, its invoked by a function in the friends.js
+router.get('/users', function(req, res, next){  //specify the route, u can name it whatever u want but it has to match the route in friends.js
   User.find(function(err, users){
     if(err){return next(err);}
     res.json(users);
@@ -124,11 +128,13 @@ router.get('/users', function(req, res, next){
 
 
 //putting current user into thr friends array and vice versa
+//:user and :friend is "replaced" with the actual id that are in database in collections, 
+
 router.put('/users/:user/friends/:friend', function(req, res, next){
-  
-  User.findById(req.params.user, function(err, user){
-    user.friends.push(req.params.friend);
-    user.save(function (err, user) {
+  console.log(req.params);  //gives u an object back with both parameters, user and friend and then u spcify which one u want
+  User.findById(req.params.user, function(err, user){ //goes thru all the users, req.params.user is the id. the user as param is the user we found by id
+    user.friends.push(req.params.friend);  // pushing the friend id into the user friends array
+    user.save(function (err, user) {  //save the updated info
       // res.json(user);
     });
   });

@@ -46,10 +46,10 @@ app.factory('auth', ['$http', '$window', function($http, $window){
      $window.localStorage.removeItem('rereddit-jwt');
    };
 
-   auth.addFriend = function(){
-    console.log("hey");
-    // return $http.put('/users/' + currentUser._id)
-   }
+   // auth.addFriend = function(){
+   //  console.log("hey");
+   //  // return $http.put('/users/' + currentUser._id)
+   // }
 
   
   return auth;
